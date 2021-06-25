@@ -216,7 +216,8 @@ jqueryWidget: {
                 clickedBar = true;
         }
          
-         var val = (this.fraction * (this.endValue - this.startValue)) + this.startValue;
+         // *** Edited!
+         //var val = (this.fraction * (this.endValue - this.startValue)) + this.startValue;
                          
         if (! clickedBar) {
             // Move the handle to the position on the bar where user clicked.
@@ -267,6 +268,7 @@ jqueryWidget: {
         var htop = (barTop - parseInt(Math.round((this.handleHeight - this.scaleHeight)/2.0)));
         this.$handle.css('left', hleft + 'px');
         this.$handle.css('top', htop + 'px');
+        // **** Edited!!
         //this.$handleLabel.text(this.fraction.toFixed(this.decimalPlaces));
         this.$handleLabel.css('left', parseInt(hleft + this.handleWidth/2 - this.$handleLabel.width()/2) + 'px');
         this.$handleLabel.css('top', parseInt(htop - this.handleHeight) + 'px');
