@@ -46,7 +46,6 @@ var defaults = [
         hideProgressBar: true
         scaleLabels: true,
         leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
-        // leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
     },
     "Scale_NoButton2", {
         startValue: 0,
