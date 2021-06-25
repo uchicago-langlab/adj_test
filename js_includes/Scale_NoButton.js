@@ -123,6 +123,9 @@ jqueryWidget: {
         this.$html1 = htmlCodeToDOM(this.html1);
         this.element.append($("<div>").addClass(this.cssPrefix + 'html1').append(this.$html1));
 
+        this.leftLabel = dget(this.options, "leftLabel");
+        this.rightLabel = dget(this.options, "rightLabel");
+
         this.currentMousePos = { x: 0, y: 0};
 
         var $bar = $("<div>").addClass(this.cssPrefix + 'bar');
@@ -155,12 +158,15 @@ jqueryWidget: {
             $bar.append($leftLabel);
             $bar.append($rightLabel);
 
-            this.$leftLabel.text(this.startValue.toFixed(this.decimalPlaces));
-            this.$rightLabel.text(this.endValue.toFixed(this.decimalPlaces));
+            this.$leftLabel.text(dget(this.options, "leftLabel"));
+            this.$rightLabel.text(dget(this.options, "rightLabel"));
+            // this.$leftLabel.text(this.startValue.toFixed(this.decimalPlaces));
+            // this.$rightLabel.text(this.endValue.toFixed(this.decimalPlaces));
         }
         this.element.append($bar);
 
-        this.handleLeft = parseInt(0);
+        this.handleLeft = parseInt(this.scaleWidth / 2);
+        // this.handleLeft = parseInt(0);
         this.fraction = 0.5;
         t();
         function t() {
@@ -265,7 +271,7 @@ jqueryWidget: {
         var htop = (barTop - parseInt(Math.round((this.handleHeight - this.scaleHeight)/2.0)));
         this.$handle.css('left', hleft + 'px');
         this.$handle.css('top', htop + 'px');
-        this.$handleLabel.text(this.fraction.toFixed(this.decimalPlaces));
+        // this.$handleLabel.text(this.fraction.toFixed(this.decimalPlaces));
         this.$handleLabel.css('left', parseInt(hleft  - this.$handleLabel.width()/2) + 'px');
         this.$handleLabel.css('top', parseInt(htop - this.handleHeight) + 'px');
         // Set color for handle.
