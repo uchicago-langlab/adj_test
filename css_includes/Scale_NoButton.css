@@ -26,10 +26,12 @@
 }
 
 .handle, .handle-label, .scale-label {
-    font-family: serif;
-    position: absolute;
-    border: 2px solid white;
-    background: white !important;
+    width: 60px;
+    height: 60px;
+    cursor: default;
+    font-face: bold;
+    border: 2px solid red;
+    background: red !important;
     float: right;
     align: right;
     margin-right: -25px;
