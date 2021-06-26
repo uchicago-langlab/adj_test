@@ -98,7 +98,7 @@ function parseColor(col) {
 }
 
 define_ibex_controller({
-name: "Scale_NoButton2",
+name: "Scale_New",
 
 jqueryWidget: {
     _init: function () {
@@ -108,6 +108,8 @@ jqueryWidget: {
 
         this.cssPrefix = this.options._cssPrefix;
         this.finishedCallback = this.options._finishedCallback;
+        
+        this.creationTime = new Date().getTime();
 
         this.html2 = this.options.html2;
         this.decimalPlaces = (this.options.decimalPlaces == null ? 2 : this.options.decimalPlaces);
@@ -118,8 +120,8 @@ jqueryWidget: {
         assert(typeof(this.startValue) == "number", "'startValue' option must be a number");
         this.endValue = this.options.endValue;
         assert(typeof(this.endValue) == "number", "'endValue' option must be a number");
-        // TO EDIT!!!
         this.buttonMessage = this.options.buttonMessage || "Continue";
+        this.saveReactionTime = dget(this.options, "saveReactionTime", false);
 
         this.leftLabel = dget(this.options, "leftLabel");
         this.rightLabel = dget(this.options, "rightLabel");
@@ -139,7 +141,7 @@ jqueryWidget: {
         this.$handleLabel = $handleLabel;
         this.$leftLabel = $leftLabel;
         this.$rightLabel = $rightLabel;
-
+        
         this.scaleWidth = this.options.scaleWidth || 300;
         this.scaleHeight = this.options.scaleHeight || 20;
         this.handleWidth = this.options.handleWidth || 30;
@@ -197,10 +199,9 @@ jqueryWidget: {
         });
     },
 
-    //  handleButtonClick: function () {
-        //console.log("VAL", val);
+   // handleButtonClick: function () {
 
-    //  },
+   // },
 
     handleBarClick: function (e) {
         var self = this;
