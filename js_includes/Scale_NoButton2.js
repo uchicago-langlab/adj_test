@@ -215,10 +215,7 @@ jqueryWidget: {
             if (e.pageY > y - 4 && e.pageY < y + self.handleHeight + 4)
                 clickedBar = true;
         }
-         
-         // *** Edited!
-         //var val = (this.fraction * (this.endValue - this.startValue)) + this.startValue;
-                         
+
         if (! clickedBar) {
             // Move the handle to the position on the bar where user clicked.
             var barLeft = self.$bar.offset().left + $(window).scrollLeft();
@@ -228,15 +225,15 @@ jqueryWidget: {
             else if (self.handleLeft > self.scaleWidth)
                 self.handleLeft = self.scaleWidth;
             self.setFraction(self.handleLeft);
-            self.setHandlePos()
-        }    
+            self.setHandlePos();
+        }
         
-        if (! clickedBar) {
-
+                if (! clickedBar) {
+            // record results after the bar is clicked
             var val = (this.fraction * (this.endValue - this.startValue)) + this.startValue;
             this.finishedCallback([[
-                     ["html2", csv_url_encode(this.$html2.innerHTML)],
-                    ["startValue", this.startValue.toFixed(this.decimalPlaces)],
+                   ["html2", csv_url_encode(this.$html2.innerHTML)],
+                   ["startValue", this.startValue.toFixed(this.decimalPlaces)],
                    ["endValue", this.endValue.toFixed(this.decimalPlaces)],
                    ["value", val.toFixed(this.decimalPlaces)]
                 ]])  
@@ -268,7 +265,6 @@ jqueryWidget: {
         var htop = (barTop - parseInt(Math.round((this.handleHeight - this.scaleHeight)/2.0)));
         this.$handle.css('left', hleft + 'px');
         this.$handle.css('top', htop + 'px');
-        // **** Edited!!
         //this.$handleLabel.text(this.fraction.toFixed(this.decimalPlaces));
         this.$handleLabel.css('left', parseInt(hleft + this.handleWidth/2 - this.$handleLabel.width()/2) + 'px');
         this.$handleLabel.css('top', parseInt(htop - this.handleHeight) + 'px');
