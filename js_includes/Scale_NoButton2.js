@@ -98,7 +98,7 @@ function parseColor(col) {
 }
 
 define_ibex_controller({
-name: "Scale_New",
+name: "Scale_NoButton2",
 
 jqueryWidget: {
     _init: function () {
@@ -108,8 +108,6 @@ jqueryWidget: {
 
         this.cssPrefix = this.options._cssPrefix;
         this.finishedCallback = this.options._finishedCallback;
-        
-        this.creationTime = new Date().getTime();
 
         this.html2 = this.options.html2;
         this.decimalPlaces = (this.options.decimalPlaces == null ? 2 : this.options.decimalPlaces);
@@ -120,8 +118,7 @@ jqueryWidget: {
         assert(typeof(this.startValue) == "number", "'startValue' option must be a number");
         this.endValue = this.options.endValue;
         assert(typeof(this.endValue) == "number", "'endValue' option must be a number");
-        this.buttonMessage = this.options.buttonMessage || "Continue";
-        this.saveReactionTime = dget(this.options, "saveReactionTime", false);
+        // this.buttonMessage = this.options.buttonMessage || "Continue";
 
         this.leftLabel = dget(this.options, "leftLabel");
         this.rightLabel = dget(this.options, "rightLabel");
@@ -141,7 +138,7 @@ jqueryWidget: {
         this.$handleLabel = $handleLabel;
         this.$leftLabel = $leftLabel;
         this.$rightLabel = $rightLabel;
-        
+
         this.scaleWidth = this.options.scaleWidth || 300;
         this.scaleHeight = this.options.scaleHeight || 20;
         this.handleWidth = this.options.handleWidth || 30;
@@ -184,24 +181,24 @@ jqueryWidget: {
             self.handleBarClick(e);
         });
 
-        this.$button = $("<div>").addClass(this.cssPrefix + 'button');
+        //this.$button = $("<div>").addClass(this.cssPrefix + 'button');
+        //this.$button.text(this.buttonMessage);
+       // this.element.append(this.$button);
+       // self.safeBind(this.$button, 'click', function (e) {
+       //     e.preventDefault();
+       //     e.stopPropagation();
+       //     self.handleButtonClick(e);
+       // });
         
-        this.$button.text(this.buttonMessage);
-        this.element.append(this.$button);
-        self.safeBind(this.$button, 'click', function (e) {
-            e.preventDefault();
-            e.stopPropagation();
-            self.handleButtonClick(e);
-        });
-
         this.safeBind($(window), 'resize', function (e) {
             self.setHandlePos();
         });
     },
 
-   // handleButtonClick: function () {
+    //  handleButtonClick: function () {
+        //console.log("VAL", val);
 
-   // },
+    //  },
 
     handleBarClick: function (e) {
         var self = this;
@@ -218,7 +215,10 @@ jqueryWidget: {
             if (e.pageY > y - 4 && e.pageY < y + self.handleHeight + 4)
                 clickedBar = true;
         }
-
+         
+         // *** Edited!
+         //var val = (this.fraction * (this.endValue - this.startValue)) + this.startValue;
+                         
         if (! clickedBar) {
             // Move the handle to the position on the bar where user clicked.
             var barLeft = self.$bar.offset().left + $(window).scrollLeft();
@@ -228,15 +228,15 @@ jqueryWidget: {
             else if (self.handleLeft > self.scaleWidth)
                 self.handleLeft = self.scaleWidth;
             self.setFraction(self.handleLeft);
-            self.setHandlePos();
-        }
+            self.setHandlePos()
+        }    
         
-                if (! clickedBar) {
-            // record results after the bar is clicked
+        if (! clickedBar) {
+
             var val = (this.fraction * (this.endValue - this.startValue)) + this.startValue;
             this.finishedCallback([[
-                   ["html2", csv_url_encode(this.$html2.innerHTML)],
-                   ["startValue", this.startValue.toFixed(this.decimalPlaces)],
+                     ["html2", csv_url_encode(this.$html2.innerHTML)],
+                    ["startValue", this.startValue.toFixed(this.decimalPlaces)],
                    ["endValue", this.endValue.toFixed(this.decimalPlaces)],
                    ["value", val.toFixed(this.decimalPlaces)]
                 ]])  
@@ -268,6 +268,7 @@ jqueryWidget: {
         var htop = (barTop - parseInt(Math.round((this.handleHeight - this.scaleHeight)/2.0)));
         this.$handle.css('left', hleft + 'px');
         this.$handle.css('top', htop + 'px');
+        // **** Edited!!
         //this.$handleLabel.text(this.fraction.toFixed(this.decimalPlaces));
         this.$handleLabel.css('left', parseInt(hleft + this.handleWidth/2 - this.$handleLabel.width()/2) + 'px');
         this.$handleLabel.css('top', parseInt(htop - this.handleHeight) + 'px');
