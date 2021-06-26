@@ -118,7 +118,8 @@ jqueryWidget: {
         assert(typeof(this.startValue) == "number", "'startValue' option must be a number");
         this.endValue = this.options.endValue;
         assert(typeof(this.endValue) == "number", "'endValue' option must be a number");
-        // this.buttonMessage = this.options.buttonMessage || "Continue";
+        // TO EDIT!!!
+        this.buttonMessage = this.options.buttonMessage || "Continue";
 
         this.leftLabel = dget(this.options, "leftLabel");
         this.rightLabel = dget(this.options, "rightLabel");
@@ -181,15 +182,16 @@ jqueryWidget: {
             self.handleBarClick(e);
         });
 
-        //this.$button = $("<div>").addClass(this.cssPrefix + 'button');
-        //this.$button.text(this.buttonMessage);
-       // this.element.append(this.$button);
-       // self.safeBind(this.$button, 'click', function (e) {
-       //     e.preventDefault();
-       //     e.stopPropagation();
-       //     self.handleButtonClick(e);
-       // });
+        this.$button = $("<div>").addClass(this.cssPrefix + 'button');
         
+        this.$button.text(this.buttonMessage);
+        this.element.append(this.$button);
+        self.safeBind(this.$button, 'click', function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            self.handleButtonClick(e);
+        });
+
         this.safeBind($(window), 'resize', function (e) {
             self.setHandlePos();
         });
