@@ -50,9 +50,9 @@ var defaults = [
     "Scale_NoButton2", {
         startValue: 0,
         endValue: 100,
-        hideProgressBar: true
-        // scaleLabels: true,
-        // leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
+        hideProgressBar: true,
+        scaleLabels: true,
+        leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
     },
     "Scale_NoButton3", {
         startValue: 0,
