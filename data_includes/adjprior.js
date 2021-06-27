@@ -43,16 +43,16 @@ var defaults = [
     "Scale_NoButton", {
         startValue: 0,
         endValue: 100,
-        hideProgressBar: true
-        // scaleLabels: true,
-        // leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
+        hideProgressBar: true,
+        scaleLabels: true,
+        leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
     },
     "Scale_NoButton2", {
         startValue: 0,
         endValue: 100,
         hideProgressBar: true,
-        scaleLabels: true,
-        leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
+        // scaleLabels: true,
+        // leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
     },
     "Scale_NoButton3", {
         startValue: 0,
@@ -63,7 +63,7 @@ var defaults = [
     "Scale_NoButton4", {
         startValue: 0,
         endValue: 100,
-        hideProgressBar: true
+        hideProgressBar: true,
       //  leftLabel: "Very unlikely", rightLabel: "Very likely" 
     },
     "Scale_New", {
