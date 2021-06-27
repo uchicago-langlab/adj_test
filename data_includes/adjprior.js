@@ -57,21 +57,24 @@ var defaults = [
     "Scale_NoButton3", {
         startValue: 0,
         endValue: 100,
-        hideProgressBar: true
-      //  leftLabel: "Very unlikely", rightLabel: "Very likely" 
+        hideProgressBar: true,
+        scaleLabels: true,
+        leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
     },
     "Scale_NoButton4", {
         startValue: 0,
         endValue: 100,
         hideProgressBar: true,
-      //  leftLabel: "Very unlikely", rightLabel: "Very likely" 
+        scaleLabels: true,
+        leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
     },
     "Scale_New", {
         startValue: 0,  
         endValue: 100,
         hideProgressBar: true,
+        hideProgressBar: true,
         scaleLabels: true,
-        leftLabel: "(Extremely unlikely)", rightLabel: "(Extremely likely)"
+        leftLabel: "(Totally unlikely)", rightLabel: "(Totally likely)"
     },
     "StaticSentence",{
         hideProgressBar: true
